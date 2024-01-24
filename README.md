@@ -38,3 +38,4 @@ bun test
 ```
 
 ## Deployed on Vercel
+https://product-cards-three.vercel.app/
