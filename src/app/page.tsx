@@ -3,9 +3,6 @@ import ProductCards from "@/components/ProductCards";
 import styles from "./page.module.css";
 import Header from "@/components/Header";
 import {
-  useQuery,
-  useMutation,
-  useQueryClient,
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";

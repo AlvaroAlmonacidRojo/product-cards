@@ -1,38 +1,12 @@
 import Image from "next/image";
 import styles from "./card.module.css";
 import { MultiMarket } from "@/types";
-import Accommodation from "../Svgs/Accommodation";
-import Flights from "../Svgs/Flights";
-import Transfers from "../Svgs/Transfers";
-import Meals from "../Svgs/Meals";
-import Activities from "../Svgs/Activities";
-import Map from "../Svgs/Map";
 import useDeviceType from "@/hooks/useDeviceType";
-
-const icons: {
-  [key: string]: {
-    icon: React.ReactNode;
-    label: string;
-  };
-} = {
-  ACCOMMODATION: {
-    icon: <Accommodation height="16" width="16" />,
-    label: "Accommodations",
-  },
-  ALL_FLIGHTS: {
-    icon: <Flights height="16" width="16" />,
-    label: "All flights",
-  },
-  ALL_TRANSFERS: {
-    icon: <Transfers height="16" width="16" />,
-    label: "All transfers",
-  },
-  SOME_MEALS: { icon: <Meals height="16" width="16" />, label: "Some meals" },
-  ACTIVITIES: {
-    icon: <Activities height="16" width="16" />,
-    label: "Activities",
-  },
-};
+import PriceDetail from "./PriceDetail";
+import Destination from "./Destination";
+import Highlights from "./Highlights";
+import Includes from "./Includes";
+import Tags from "./Tags";
 
 const dimensions = {
   mobile: { width: 317, height: 150 },
@@ -67,55 +41,13 @@ const Card = ({ multimarket }: { multimarket: MultiMarket }) => {
           />
         </div>
         <div className={styles.cardDetails}>
-          <div className={styles.cardPrices} style={{}}>
-            <h3>{priceDetail.pricingPercentage}%</h3>
-            <p>From: {priceDetail.oldPriceBeautify}</p>
-            <h2>
-              <strong>{priceDetail.fromPriceBeautify}</strong>
-            </h2>
-            <p>Per night: {priceDetail.pricePerNight}</p>
-          </div>
-          <div className={styles.cardDestination}>
-            <h3>
-              {destination} in {days} days
-            </h3>
-            <h4>{title}</h4>
-          </div>
-          <div>
-            <ul>
-              {highlights.slice(0, 4).map((highligh, index) => {
-                return (
-                  <li key={highligh.title + index}>
-                    <Map />
-                    <div>
-                      <span>{highligh.title}</span>
-                    </div>
-                  </li>
-                );
-              })}
-              <span style={{ marginLeft: "20px" }}>+ {highlights.length - 4} more</span>
-            </ul>
-          </div>
+          <PriceDetail priceDetail={priceDetail}/>
+          <Destination destination={destination} days={days} title={title} />
+            <Highlights highlights={highlights} />
           {deviceType !== "mobile" && (
-            <div>
-              <ul>
-                {includes.map((include, index) => {
-                  return (
-                    <li key={include + index}>
-                      {icons[include]?.icon || ""}
-                      <div>{icons[include]?.label}</div>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
+              <Includes includes={includes} />
           )}
-
-          <div className={styles.cardTags}>
-            {tags.map((value, index) => {
-              return <button key={index + value.tagId}>{value.name}</button>;
-            })}
-          </div>
+          <Tags tags={tags}/>
           <div className={styles.seeCard}>
             <button>See trip</button>
           </div>
