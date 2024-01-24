@@ -1,0 +1,146 @@
+.card {
+  border: 1.5px solid rgb(229, 229, 229);
+  border-radius: 24px;
+  overflow: hidden;
+  /* max-width: 533px; */
+  max-width: 1086px;
+  max-height: 266px;
+  margin: 10px auto 10px auto;
+  background: rgb(255, 255, 255);
+}
+
+.cardContent {
+  text-align: left;
+  display: grid;
+  grid-auto-rows: min-content;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.cardDetails {
+  padding: 1em;
+  display: grid;
+  grid-auto-rows: auto;
+  grid-template-columns: minmax(0px, 0.35fr) minmax(0px, 0.35fr) minmax(
+      0px,
+      0.3fr
+    );
+  gap: 8px;
+}
+
+.cardPrices {
+  grid-column-start: 3;
+  grid-row: span 2;
+  text-align: right;
+}
+
+.cardDestination {
+  grid-column: span 2;
+  grid-row-start: 1;
+}
+
+.cardTags {
+  grid-column-end: 3;
+  grid-column-start: 1;
+}
+
+.seeCard {
+  grid-column-end: 4;
+  display: flex;
+  justify-content: end;
+}
+
+@media (max-width: 992px) {
+  .card {
+    max-width: 530px;
+    max-height: 100%;
+  }
+
+  .cardContent {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    max-width: 317px;
+  }
+
+  .cardDetails {
+    grid-template-columns: minmax(0px, 1fr);
+  }
+
+  .cardPrices {
+    grid-column: auto;
+    text-align: left;
+  }
+
+  .cardDestination {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .cardTags {
+    grid-column: auto;
+  }
+
+  .seeCard {
+    grid-column: auto;
+    justify-content: center;
+  }
+
+  .seeCard button {
+    border-radius: 10px;
+    padding: 3px;
+  }
+}
+
+.cardDetails ul {
+  list-style-type: none;
+  font-size: small;
+}
+
+.cardDetails li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cardTags button {
+  -webkit-box-align: center;
+  align-items: center;
+  gap: 4px;
+  padding: 0px 8px;
+  font-size: 0.625rem;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  height: 24px;
+  color: rgb(42, 42, 42);
+  border: 1.5px solid rgb(202, 202, 202);
+  border-radius: 100px;
+  text-transform: uppercase;
+  background-color: transparent;
+  pointer-events: none;
+  white-space: nowrap;
+  cursor: pointer;
+  margin: 1px;
+}
+
+.seeCard button {
+  color: rgb(255, 255, 255);
+  width: auto;
+  border-radius: 100px;
+  padding: 16px 18px;
+  font-size: 1rem;
+  white-space: nowrap;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  gap: 8px;
+  background-color: rgb(18, 18, 18);
+  border-width: 2px;
+  border-style: solid;
+  border-color: transparent;
+  cursor: pointer;
+}
